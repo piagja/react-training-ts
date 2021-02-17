@@ -11,6 +11,7 @@ export const Main = styled.main`
   width: 900px;
   background: #6930c3;
   overflow: hidden;
+  box-shadow: 20px 20px 128px black;
 
   img {
     height: 100px;
