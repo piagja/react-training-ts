@@ -15,7 +15,7 @@ export const Main = styled.main`
 
   img {
     height: 100px;
-    border-radius: 50%;
+    border-radius: 25%;
     margin: 25px;
   }
 `
