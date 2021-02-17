@@ -7,7 +7,6 @@ import {Title, Main, Input, Image, P, Div, Header, Button} from './styles'
 interface Repository {
   full_name: string,
   description: string,
-  url: string,
   owner: {
     login: string,
     avatar_url: string
@@ -48,7 +47,6 @@ const Home: React.FC = () => {
             <img src={repo.owner.avatar_url} alt={repo.owner.login} />
             <Title>Repo: {repo.full_name}</Title>
             <P>Description: {repo.description}</P>
-            <P><a href={repo.url}>Link: {repo.url}</a></P>
           </Div>
           ))}
       </Main>
