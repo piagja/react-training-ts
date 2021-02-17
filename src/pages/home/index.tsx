@@ -21,7 +21,7 @@ const Home: React.FC = () => {
     const response = await api.get(`repos/${newRepo}`)
     const repository = response.data
     setRepositories([...repositories, repository])
-    // setNewRepo('')
+    setNewRepo('')
     console.log(repository)
   }
 
