@@ -3,6 +3,7 @@ import Logo from '../../img/logo-github.svg'
 import api from '../../services/api'
 
 import {Title, Main, Input, Image, P, Div, Header, Button} from './styles'
+import {toast} from 'react-toastify'
 
 interface Repository {
   full_name: string,
@@ -18,15 +19,39 @@ const Home: React.FC = () => {
   const [repositories, setRepositories] = useState<Repository[]>([])
 
   async function handleRepoData() {
-    const response = await api.get(`repos/${newRepo}`)
-    const repository = response.data
-    setRepositories([...repositories, repository])
-    setNewRepo('')
-    console.log(repository)
+    try {
+      const response = await api.get(`repos/${newRepo}`)
+      const repository = response.data
+      setRepositories([...repositories, repository])
+      setNewRepo('')
+
+      toast('Repository succesfully added!', {
+        position: "top-center",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined
+      })
+    } catch (error) {
+      return toast.dark('Oops! Something went wrong!', {
+        autoClose: 2500,
+      })
+    }
   }
 
   const handleClearRepo = () => {
     setRepositories([])
+    toast('Repositories successfully cleared!', {
+      position: "top-center",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined
+    })
   }
 
   return (
